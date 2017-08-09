@@ -206,7 +206,11 @@
     }
     //在没有导过缓存和可以多次导入缓存的情况下尝试导入缓存
     if (!self.hasImportCache || self.importCacheOnce == NO ) {
-        NSObject *responseObject = [[HZNetworkConfig sharedConfig].cacheHandler cacheForKey:self.cacheKey];
+        id<HZNetworkCache> cacheHandler = [HZNetworkConfig sharedConfig].cacheHandler;
+        NSObject *responseObject = nil;
+        if ([cacheHandler respondsToSelector:@selector(cacheForKey:)]) {
+            responseObject = [[HZNetworkConfig sharedConfig].cacheHandler cacheForKey:self.cacheKey];
+        }
         if (responseObject.isNoEmpty) {
             self.responseObject = responseObject;
             self.cacheImportState =  HZSessionTaskCacheImportStateSuccess;
@@ -244,7 +248,10 @@
             self.error = nil;
             //对有效数据进行缓存
             if (self.isCached && self.cacheKey.isNoEmpty) {
-                [[HZNetworkConfig sharedConfig].cacheHandler setCache:responseObject forKey:self.cacheKey];
+                id<HZNetworkCache> cacheHandler = [HZNetworkConfig sharedConfig].cacheHandler;
+                if ([cacheHandler respondsToSelector:@selector(setCache:forKey:)]) {
+                    [cacheHandler setCache:responseObject forKey:self.cacheKey];
+                }
             }
         }else {
             self.state = HZSessionTaskStateFail;
@@ -327,12 +334,19 @@
 
 - (NSString *)cacheKey
 {
-    NSString *cacheKey = @"";
+    NSString *identifierURL = @"";
+    NSString *headerKeyValue = self.requestHeader.keyValueString;
     if([self.method caseInsensitiveCompare:@"GET"] == NSOrderedSame){
-        cacheKey = self.absoluteURL.md5String;
+        identifierURL = self.absoluteURL;
     }else if ([self.method caseInsensitiveCompare:@"POST"] == NSOrderedSame){
-        cacheKey = self.params.isNoEmpty?[self.absoluteURL stringByAppendingFormat:@"?%@",self.params.keyValueString].md5String:self.absoluteURL;
+        identifierURL = [self.absoluteURL stringByAppendingFormat:@"?%@",self.params.isNoEmpty?self.params.keyValueString:@""];
     }
+    
+    if (headerKeyValue.isNoEmpty) {
+        identifierURL = [identifierURL stringByAppendingString:headerKeyValue];
+    }
+    
+    NSString *cacheKey = identifierURL.md5String;
     return cacheKey;
 }
 

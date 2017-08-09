@@ -242,7 +242,6 @@ typedef NS_ENUM(NSUInteger, HZSessionTaskCacheImportState) {  //The importing st
  */
 - (void)startWithHandler:(nullable void(^)(HZSessionTask *task, NSError  * _Nullable error))handler;
 
-
 /**
  Cancles task.
  */
