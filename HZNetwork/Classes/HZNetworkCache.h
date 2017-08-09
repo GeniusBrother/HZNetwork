@@ -1,9 +1,9 @@
 //
 //  HZNetworkCache.h
-//  Pods
+//  HZNetwork
 //
-//  Created by xzh on 2017/8/7.
-//
+//  Created by xzh. on 2017/8/7.
+//  Copyright (c) 2017年 xzh. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

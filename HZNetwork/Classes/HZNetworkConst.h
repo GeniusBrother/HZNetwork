@@ -1,9 +1,9 @@
 //
 //  HZNetworkConst.h
-//  Pods
+//  HZNetwork
 //
-//  Created by xzh on 16/9/25.
-//
+//  Created by xzh. on 2016/9/25.
+//  Copyright (c) 2016年 xzh. All rights reserved.
 //
 
 #ifndef HZNetworkConst_h

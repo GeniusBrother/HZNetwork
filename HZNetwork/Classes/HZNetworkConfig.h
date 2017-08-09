@@ -1,9 +1,9 @@
 //
 //  HZNetworkConfig.h
-//  ZHFramework
+//  HZNetwork
 //
-//  Created by xzh on 16/1/9.
-//  Copyright © 2016年 xzh. All rights reserved.
+//  Created by xzh. on 16/1/9.
+//  Copyright (c) 2016年 xzh. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
