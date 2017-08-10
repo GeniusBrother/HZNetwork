@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <HZFoundation/HZSingleton.h>
 #import "HZNetworkCache.h"
 typedef NS_ENUM(NSUInteger, HZSSLPinningMode) {
     HZSSLPinningModeNone,       //验证返回的证书是否由受信任的机构颁发
@@ -21,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
  Provides config for HZNetwork.
  */
 @interface HZNetworkConfig : NSObject
-singleton_h(Config)
 
 /** The default base URL for 'HZSessiontask'.*/
 @property(nonatomic, copy, readonly) NSString *baseURL;
@@ -60,6 +58,13 @@ singleton_h(Config)
  You also can specify it for task alone.
  */
 @property(nonatomic, assign) BOOL taskShouldCache;
+
+/**
+ Returns global HZNetworkConfig instance.
+ 
+ @return HZNetworkConfig shared instance
+ */
++ (instancetype)sharedConfig;
 
 /**
  Configs data.

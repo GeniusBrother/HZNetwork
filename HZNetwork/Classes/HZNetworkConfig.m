@@ -8,8 +8,6 @@
 
 #import "HZNetworkConfig.h"
 #import "AFNetworking.h"
-#import "NSDictionary+HZExtend.h"
-#import "NSString+HZExtend.h"
 #import "HZNetworkAction.h"
 
 @interface HZNetworkConfig ()
@@ -22,7 +20,21 @@
 
 @implementation HZNetworkConfig
 #pragma mark - Initialization
-singleton_m
+static id _instance;
++ (id)allocWithZone:(struct _NSZone *)zone
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [super allocWithZone:zone];
+    });
+    return _instance;
+}
+
++ (id)copyWithZone:(struct _NSZone *)zone
+{
+    return _instance;
+}
+
 + (instancetype)sharedConfig
 {
     static dispatch_once_t onceToken;
@@ -65,14 +77,14 @@ singleton_m
     _rightCode = rightCode;
     self.userAgent = userAgent;
     
-    if (userAgent.isNoEmpty) {
+    if ([userAgent isKindOfClass:[NSString class]] && userAgent.length > 0) {
         [self addDefaultHeaderFields:@{@"User-Agent":userAgent}];
     }
 }
 
 - (void)addDefaultHeaderFields:(NSDictionary *)headerFields
 {
-    if (headerFields.isNoEmpty) {
+    if ([headerFields isKindOfClass:[NSDictionary class]] && headerFields.count > 0) {
         [self.headerFields addEntriesFromDictionary:headerFields];
         self.userAgent = [self.headerFields objectForKey:@"User-Agent"];
         
@@ -95,7 +107,7 @@ singleton_m
 {
     _userAgent = userAgent;
     
-    if (userAgent.isNoEmpty) {
+    if ([userAgent isKindOfClass:[NSString class]] && userAgent.length > 0) {
         [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent":userAgent}];
     }
 }

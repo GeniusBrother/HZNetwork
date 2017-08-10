@@ -14,10 +14,8 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - HZFoundation (0.1.1)
   - HZNetwork (0.6.0):
     - AFNetworking (~> 3.1.0)
-    - HZFoundation
 
 DEPENDENCIES:
   - HZNetwork (from `../`)
@@ -28,8 +26,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  HZFoundation: f9c3d8f2e8adca7a2001ddae1567419ac1821443
-  HZNetwork: ca77e6cb5a770742da22d0d0df5f92e047f9a8b5
+  HZNetwork: c8f0a68179e3fb5beca8b3d027f38bc6885b42bf
 
 PODFILE CHECKSUM: 16aa15dbe1ad94e8bcf60df2767858a635012187
 

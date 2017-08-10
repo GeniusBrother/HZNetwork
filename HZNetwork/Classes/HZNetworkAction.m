@@ -7,7 +7,6 @@
 //
 
 #import "HZNetworkAction.h"
-#import <HZFoundation/HZFoundation.h>
 #import "HZSessionTask.h"
 #import <AFNetworking/AFNetworking.h>
     
@@ -20,7 +19,21 @@
 
 @implementation HZNetworkAction
 #pragma mark - Initializtion
-singleton_m
+static id _instance;
++ (id)allocWithZone:(struct _NSZone *)zone
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [super allocWithZone:zone];
+    });
+    return _instance;
+}
+
++ (id)copyWithZone:(struct _NSZone *)zone
+{
+    return _instance;
+}
+
 + (instancetype)sharedAction
 {
     static dispatch_once_t onceToken;
@@ -56,12 +69,14 @@ singleton_m
 #pragma mark - Public Method
 - (void)configDefaultRequestHeader:(NSDictionary<NSString *,NSString *> *)requestHeaders
 {
-    if (!requestHeaders.isNoEmpty) return;
+    if (!([requestHeaders isKindOfClass:[NSDictionary class]] && requestHeaders.count > 0)) return;
     
     //设置默认的请求头
     [requestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
-        [self.sessionManager.requestSerializer setValue:[obj urlEncode] forHTTPHeaderField:key];
+        NSString *urlEncode = [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        [self.sessionManager.requestSerializer setValue:urlEncode forHTTPHeaderField:key];
     }];
+    
 }
 
 - (void)performTask:(HZSessionTask *)task completion:(nonnull void (^)(HZNetworkAction * _Nonnull, id _Nullable, NSError * _Nullable))completion
@@ -80,18 +95,19 @@ singleton_m
     NSData *fileData = [fileDic objectForKey:kHZFileData];
     NSString *fileName = [fileDic objectForKey:kHZFileName];
     NSString *filePath = [fileDic objectForKey:kHZFileURL];
-    NSAssert( !filePath.isNoEmpty || !fileData.isNoEmpty , @"HZNetwork 上传文件不能为空");
+    
+    NSAssert( !filePath || !fileData, @"HZNetwork 上传文件不能为空");
     
     NSString *mineType = [fileDic objectForKey:kHZFileMimeType];
     NSString *formName = [fileDic objectForKey:kHZFileFormName];
     
     NSError *serializationError = nil;
     NSMutableURLRequest *request = [self.sessionManager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:sessionTask.absoluteURL parameters:sessionTask.params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        if (fileData.isNoEmpty) {
+        if (fileData) {
             [formData appendPartWithFileData:fileData name:formName fileName:fileName mimeType:mineType];
         }else {
             
-            NSURL *fileURL =[NSURL URLWithString:filePath.isNoEmpty?filePath:@""];
+            NSURL *fileURL =[NSURL URLWithString:filePath?:@""];
             [formData appendPartWithFileURL:fileURL name:formName fileName:fileName mimeType:mineType error:nil];
         }
     } error:&serializationError];
@@ -105,9 +121,9 @@ singleton_m
     [sessionTask.requestHeader enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
         [request setValue:obj forHTTPHeaderField:key];
     }];
-    HZWeakObj(self);
+    __weak typeof(self) weakSelf = self;
     NSURLSessionUploadTask *dataTask = [self.sessionManager uploadTaskWithStreamedRequest:request progress:uploadProgressBlock completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        HZStrongObj(self);
+        __strong typeof(weakSelf) strong_self = weakSelf;
         if (completion) {
             completion(strong_self,responseObject,error);
         }
@@ -163,19 +179,18 @@ singleton_m
         [request setValue:obj forHTTPHeaderField:key];
     }];
     
-    HZWeakObj(self);
+    __weak typeof(self) weakSelf = self;
     NSURLSessionDataTask *dataTask = [self.sessionManager dataTaskWithRequest:request
                                                                uploadProgress:nil
                                                              downloadProgress:nil
                                                             completionHandler:^(NSURLResponse * __unused response, id responseObject, NSError *error) {
                                                                 
-                                                                HZStrongObj(self);
                                                                 if (completion) {
-                                                                    completion(strong_self,responseObject,error);
+                                                                    completion(weakSelf,responseObject,error);
                                                                 }
                                                                 
                                                                 if (sessionTask.taskIdentifier) {
-                                                                    [strong_self.dataTasks removeObjectForKey:sessionTask.taskIdentifier];
+                                                                    [weakSelf.dataTasks removeObjectForKey:sessionTask.taskIdentifier];
                                                                 }
                                                                 
                                                             }];

@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.public_header_files = 'HZNetwork/Classes/**/*.h'
   s.source_files = 'HZNetwork/Classes/**/*.{h,m}'
 
-  s.dependency 'HZFoundation'
   s.dependency 'AFNetworking','~>3.1.0'
   
 end

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <HZFoundation/HZSingleton.h>
 
 @class HZNetworkAction,HZSessionTask;
 
@@ -17,7 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
  Typically, you should not use this class directly.
  */
 @interface HZNetworkAction : NSObject
-singleton_h(Action)
+
+/**
+ Returns global HZNetworkAction instance.
+ 
+ @return HZNetworkAction shared instance
+ */
++ (instancetype)sharedAction;
 
 /**
  Configs default http header of all request.

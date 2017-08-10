@@ -19,9 +19,6 @@
   "public_header_files": "HZNetwork/Classes/**/*.h",
   "source_files": "HZNetwork/Classes/**/*.{h,m}",
   "dependencies": {
-    "HZFoundation": [
-
-    ],
     "AFNetworking": [
       "~>3.1.0"
     ]
