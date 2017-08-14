@@ -12,6 +12,5 @@
 #import "HZSessionTask.h"
 #import "HZNetworkConfig.h"
 #import "HZNetworkCache.h"
-#import "HZNetworkCacheHandler.h"
 
 #endif /* Header_h */

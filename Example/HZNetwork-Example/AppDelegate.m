@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <HZNetwork/HZNetwork.h>
+#import "HZNetworkCacheHandler.h"
 @interface AppDelegate ()
 @end
 
