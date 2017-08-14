@@ -94,6 +94,8 @@ uploadTask.fileParams = [NSMutableDictionary dictionaryWithDictionary:@{kHZFileM
 uploadTask.uploadProgressBlock = ^(HZSessionTask * _Nonnull task, NSProgress * _Nonnull progress) {
    
 }
+
+[uploadTask start];
 ```
 
 ### CallBack
