@@ -126,7 +126,7 @@ typedef NS_ENUM(NSUInteger, HZSessionTaskCacheImportState) {  //The importing st
  @return new instance of `HZSessionTask` with specified http parameters.
  */
 + (instancetype)uploadTaskWithPath:(NSString *)path
-                              params:(nullable NSMutableDictionary<NSString *, id> *)params
+                              params:(nullable NSDictionary<NSString *, id> *)params
                             delegate:(nullable id<HZSessionTaskDelegate>)delegate
                       taskIdentifier:(NSString *)taskIdentifier;
 
@@ -193,7 +193,7 @@ typedef NS_ENUM(NSUInteger, HZSessionTaskCacheImportState) {  //The importing st
 @property(nonatomic, assign, getter=isCached) BOOL cached;
 
 /**
- If `YES`, only import cache once when task is executed more than once.
+ If `YES`, only import cache once when task is executed more than once or import cache everytime.
  The default value is `YES`.
  */
 @property(nonatomic, assign) BOOL importCacheOnce;

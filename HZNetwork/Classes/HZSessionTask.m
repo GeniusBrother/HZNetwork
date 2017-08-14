@@ -77,7 +77,7 @@
 }
 
 + (instancetype)uploadTaskWithPath:(NSString *)path
-                            params:(NSMutableDictionary<NSString *,id> *)params
+                            params:(NSDictionary<NSString *,id> *)params
                           delegate:(id<HZSessionTaskDelegate>)delegate
                     taskIdentifier:(NSString *)taskIdentifier
 {
@@ -233,7 +233,9 @@
             self.error = error;
         }
         self.state = HZSessionTaskStateFail;
-//        NSLog(HZ_RESPONSE_LOG_FORMAT,self.absoluteURL,self.message);
+#if DEBUG
+        NSLog(HZ_RESPONSE_LOG_FORMAT,self.absoluteURL,self.message);
+#endif
     }else {
         self.responseObject = responseObject;
         BOOL codeRight = [self codeIsRight];
@@ -257,8 +259,10 @@
                     errorCode = error;
                 }
             }
-            self.error = [NSError errorWithDomain:@"com.HZNetwork" code:errorCode.integerValue userInfo:@{@"NSLocalizedDescription":self.message}];;
-//            HZLog(HZ_RESPONSE_LOG_FORMAT,self.absoluteURL,self.message);
+            self.error = [NSError errorWithDomain:@"com.HZNetwork" code:errorCode.integerValue userInfo:@{@"NSLocalizedDescription":self.message}];
+#if DEBUG
+    NSLog(HZ_RESPONSE_LOG_FORMAT,self.absoluteURL,self.message);
+#endif
         }
     }
     [self callBackTaskStatus];
@@ -303,7 +307,7 @@
 
 - (NSString *)keyValueStringWithDic:(NSDictionary *)dic
 {
-    if (!dic) return nil;
+    if (!(![dic isKindOfClass:[NSNull class]] && dic.count > 0)) return nil;
     
     NSMutableString *string = [NSMutableString string];
     [dic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {

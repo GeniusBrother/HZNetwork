@@ -14,20 +14,50 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - HZFoundation (0.1.1)
   - HZNetwork (0.6.0):
     - AFNetworking (~> 3.1.0)
+  - Masonry (1.0.2)
+  - MJRefresh (3.1.12)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
+  - TTTAttributedLabel (2.0.0)
+  - YYCache (1.0.4)
+  - YYModel (1.0.4)
 
 DEPENDENCIES:
+  - HZFoundation (from `https://github.com/GeniusBrother/HZFoundation`)
   - HZNetwork (from `../`)
+  - Masonry
+  - MJRefresh (~> 3.1.12)
+  - SDWebImage
+  - TTTAttributedLabel (~> 2.0.0)
+  - YYCache
+  - YYModel
 
 EXTERNAL SOURCES:
+  HZFoundation:
+    :git: https://github.com/GeniusBrother/HZFoundation
   HZNetwork:
     :path: ../
 
+CHECKOUT OPTIONS:
+  HZFoundation:
+    :commit: 395efd69a3992a83fe25a11bd08854b3e822e792
+    :git: https://github.com/GeniusBrother/HZFoundation
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  HZFoundation: f9c3d8f2e8adca7a2001ddae1567419ac1821443
   HZNetwork: c8f0a68179e3fb5beca8b3d027f38bc6885b42bf
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 16aa15dbe1ad94e8bcf60df2767858a635012187
+PODFILE CHECKSUM: 9a18dea7c42b444961f11f653e81220107d154a0
 
 COCOAPODS: 1.2.0

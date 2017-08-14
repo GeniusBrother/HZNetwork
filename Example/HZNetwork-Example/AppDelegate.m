@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <HZNetwork/HZSessionTask.h>
+#import <HZNetwork/HZNetwork.h>
 @interface AppDelegate ()
 @end
 
@@ -15,14 +15,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    HZSessionTask *task = [HZSessionTask taskWithMethod:@"GET" URLString:@"https://api.udostory.com/api/user/info?uid=4864" delegate:nil taskIdentifier:@"sss"];
-    [task.params addEntriesFromDictionary:@{@"page":@1,@"pageSize":@20}];
-    [task startWithCompletion:^(HZSessionTask * _Nullable task) {
-        if (task.state == HZSessionTaskStateSuccess) {
-            NSLog(@"%@",task.responseObject);
-        }
-    }];
-
+    //Configs Data
+    //The corresponding response data format is {code:0,data:{....},msg:"success"}.
+    [[HZNetworkConfig sharedConfig] setupBaseURL:@"https://api.udostory.com" codeKeyPath:@"code" msgKeyPath:@"msg" userAgent:@"HZNetwork Example" rightCode:0];
+    
+    //Setting task should cache response by default.
+    [HZNetworkConfig sharedConfig].taskShouldCache = YES;
+    
+    //Registers the cache hanlder which implements the protocol of HZNetworkCache.
+    [[HZNetworkConfig sharedConfig] registerCacheHandler:[[HZNetworkCacheHandler alloc] init]];
     
     return YES;
 }
