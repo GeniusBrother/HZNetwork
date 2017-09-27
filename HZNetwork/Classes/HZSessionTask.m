@@ -387,7 +387,8 @@
     
     if ([self.method caseInsensitiveCompare:@"GET"] == NSOrderedSame && self.params) {
         NSString *separator = [absoluteURL rangeOfString:@"?"].length == 0?@"?":@"&";
-        absoluteURL = [absoluteURL stringByAppendingFormat:@"%@%@",separator,[self keyValueStringWithDic:self.params]]; //查询字符串格式
+        NSString *queryStr = [self keyValueStringWithDic:self.params];
+        absoluteURL = [absoluteURL stringByAppendingFormat:@"%@%@",separator,queryStr?:@""]; //查询字符串格式
     }
     
     return absoluteURL;
