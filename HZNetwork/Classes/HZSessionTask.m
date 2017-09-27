@@ -395,14 +395,9 @@
 
 - (NSString *)requestPath
 {
-    NSString *requestPath = @"";
-    if (_absoluteURL) {
-        requestPath = _absoluteURL;
-    }else {
-        NSString *baseURL = self.baseURL?:[HZNetworkConfig sharedConfig].baseURL;
-        NSAssert(baseURL, @"请设置baseURL 推荐使用HZNetworkConfig来设置统一baseURL");
-        requestPath = [baseURL stringByAppendingString:self.path];
-    }
+    NSString *baseURL = self.baseURL?:[HZNetworkConfig sharedConfig].baseURL;
+    NSAssert(baseURL, @"请设置baseURL 推荐使用HZNetworkConfig来设置统一baseURL");
+    NSString *requestPath = [baseURL stringByAppendingString:self.path];
     
     if(self.pathValues) {
         NSMutableString *pathStr = [NSMutableString string];
