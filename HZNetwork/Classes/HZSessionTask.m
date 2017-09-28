@@ -385,10 +385,9 @@
 {
     NSString *absoluteURL = self.requestPath;
     
-    if ([self.method caseInsensitiveCompare:@"GET"] == NSOrderedSame && self.params) {
+    if ([self.method caseInsensitiveCompare:@"GET"] == NSOrderedSame && self.params.count > 0) {
         NSString *separator = [absoluteURL rangeOfString:@"?"].length == 0?@"?":@"&";
-        NSString *queryStr = [self keyValueStringWithDic:self.params];
-        absoluteURL = [absoluteURL stringByAppendingFormat:@"%@%@",separator,queryStr?:@""]; //查询字符串格式
+        absoluteURL = [absoluteURL stringByAppendingFormat:@"%@%@",separator,[self keyValueStringWithDic:self.params]]; //查询字符串格式
     }
     
     return absoluteURL;
