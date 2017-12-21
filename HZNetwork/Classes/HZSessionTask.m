@@ -10,6 +10,7 @@
 #import "HZSessionTask.h"
 #import "HZNetworkConfig.h"
 #import "HZNetworkAction.h"
+#import "NSString+URL.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @interface HZSessionTask ()
@@ -402,7 +403,7 @@
     if(self.pathValues) {
         NSMutableString *pathStr = [NSMutableString string];
         [self.pathValues enumerateObjectsUsingBlock:^(NSString *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [pathStr appendFormat:@"/%@",[obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+            [pathStr appendFormat:@"/%@",[obj urlEncode]];
         }];
         requestPath = [requestPath stringByAppendingString:pathStr];  //路径格式
     }
