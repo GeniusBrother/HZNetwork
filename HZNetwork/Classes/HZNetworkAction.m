@@ -73,8 +73,7 @@ static id _instance;
     
     //设置默认的请求头
     [requestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
-        NSString *urlEncode = [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-        [self.sessionManager.requestSerializer setValue:urlEncode forHTTPHeaderField:key];
+        [self.sessionManager.requestSerializer setValue:obj forHTTPHeaderField:key];
     }];
     
 }
