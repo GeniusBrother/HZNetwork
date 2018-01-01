@@ -9,7 +9,7 @@
 
 @implementation NSString (URL)
 
-- (NSString *)urlEncode
+- (NSString *)hzn_urlEncode
 {
     return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"-_.!*'();:@$,[]"]];
 }

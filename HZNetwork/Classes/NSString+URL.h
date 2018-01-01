@@ -9,6 +9,6 @@
 
 @interface NSString (URL)
 
-- (NSString *)urlEncode;
+- (NSString *)hzn_urlEncode;
 
 @end

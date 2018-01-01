@@ -13,15 +13,8 @@
     @"\n\n" \
     @"------ BEGIN HZNetwork Response Error------\n" \
     @"URL: %@\n" \
+    @"param: %@\n"\
     @"response: %@\n" \
-    @"------ END --------------------------------\n" \
-    @"\n"
-
-#define HZ_REQUEST_LOG_FORMAT \
-    @"\n\n" \
-    @"------ BEGIN HZNetwork Request Error-------\n" \
-    @"URL: %@\n" \
-    @"error: %@\n" \
     @"------ END --------------------------------\n" \
     @"\n"
 

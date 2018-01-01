@@ -10,7 +10,7 @@
 #import "HZSessionTask.h"
 #import "HZNetworkConfig.h"
 #import "HZNetworkAction.h"
-#import "NSString+URL.h"
+#import "NSDictionary+Helper.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @interface HZSessionTask ()
@@ -62,17 +62,19 @@
     return task;
 }
 
-+ (instancetype)taskWithMethod:(NSString *)method
-                     URLString:(NSString *)URLString
-                      delegate:(id<HZSessionTaskDelegate>)delegate
-                taskIdentifier:(NSString *)taskIdentifier
++ (nullable instancetype)taskWithMethod:(NSString *)method
+                              URLString:(NSString *)URLString
+                                 params:(nullable NSDictionary<NSString *,id> *)params
+                               delegate:(id<HZSessionTaskDelegate>)delegate
+                         taskIdentifier:(NSString *)taskIdentifier
 {
-    HZSessionTask *task = [[self alloc] init];
-    task.method = method;
-    task.absoluteURL = URLString;
-    task.delegate = delegate;
-    task.taskIdentifier = taskIdentifier;
-    task.cached = [HZNetworkConfig sharedConfig].taskShouldCache;
+    NSURL *url = [NSURL URLWithString:URLString];
+    if (!url) return nil;
+    
+    NSString *path = url.path;
+    NSString *baseURL = [NSString stringWithFormat:@"%@://%@%@",url.scheme,url.host,url.port?[NSString stringWithFormat:@":%@",url.port]:@""];
+    HZSessionTask *task = [self taskWithMethod:method path:path params:params delegate:delegate taskIdentifier:taskIdentifier];
+    task.baseURL = baseURL;
     
     return task;
 }
@@ -235,7 +237,7 @@
         }
         self.state = HZSessionTaskStateFail;
 #if DEBUG
-        NSLog(HZ_RESPONSE_LOG_FORMAT,self.absoluteURL,self.message);
+        NSLog(HZ_RESPONSE_LOG_FORMAT,self.absoluteURL,[self.params hzn_jsonString],self.message);
 #endif
     }else {
         self.responseObject = responseObject;
@@ -262,7 +264,7 @@
             }
             self.error = [NSError errorWithDomain:@"com.HZNetwork" code:errorCode.integerValue userInfo:@{@"NSLocalizedDescription":self.message}];
 #if DEBUG
-    NSLog(HZ_RESPONSE_LOG_FORMAT,self.absoluteURL,self.message);
+    NSLog(HZ_RESPONSE_LOG_FORMAT,self.absoluteURL,[self.params hzn_jsonString],self.message);
 #endif
         }
     }
@@ -398,14 +400,22 @@
 {
     NSString *baseURL = self.baseURL?:[HZNetworkConfig sharedConfig].baseURL;
     NSAssert(baseURL, @"请设置baseURL 推荐使用HZNetworkConfig来设置统一baseURL");
-    NSString *requestPath = [baseURL stringByAppendingString:self.path];
     
-    if(self.pathValues) {
-        NSMutableString *pathStr = [NSMutableString string];
-        [self.pathValues enumerateObjectsUsingBlock:^(NSString *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [pathStr appendFormat:@"/%@",[obj urlEncode]];
-        }];
-        requestPath = [requestPath stringByAppendingString:pathStr];  //路径格式
+    NSString *requestPath = baseURL;
+    if (self.path) requestPath = [requestPath stringByAppendingString:self.path];
+    
+    if(self.pathValues && self.path) {
+        NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:@":\\w+" options:0 error:nil];
+        NSArray* matches = [reg matchesInString:requestPath options:0 range:NSMakeRange(0, requestPath.length)];
+        if (matches.count == self.pathValues.count) {
+            for (NSInteger idx = matches.count - 1; idx>=0; idx--) {
+                id replaceValue = [self.pathValues objectAtIndex:idx];
+                NSTextCheckingResult* result = matches[idx];
+                requestPath = [requestPath stringByReplacingCharactersInRange:result.range withString:[NSString stringWithFormat:@"%@",replaceValue]];
+            }
+        }else {
+           NSAssert(NO, @"Missing path value");
+        }
     }
     
     return requestPath;
