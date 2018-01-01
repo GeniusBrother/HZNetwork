@@ -46,9 +46,6 @@ typedef NS_ENUM(NSUInteger, HZSessionTaskCacheImportState) {  //The importing st
  @param params The parameters for http query string.
  @param delegate The task's delegate object. You can get execution state of task by it.
  @param taskIdentifier The UUID of task.
- @param pathValues An array consists of path parameters.
- 
- @discussion If set the pathValues not empty, the path value will be appended to path. Like URL https://github.com/GeniusBrother/HZExtend/value1/value2/...
  
  @return new instance of `HZSessionTask` with specified http parameters.
  */
@@ -58,6 +55,19 @@ typedef NS_ENUM(NSUInteger, HZSessionTaskCacheImportState) {  //The importing st
                       delegate:(nullable id<HZSessionTaskDelegate>)delegate
                 taskIdentifier:(nullable NSString *)taskIdentifier;
 
+/**
+ Creates and returns a task.
+ 
+ @param method The request method, currently only GET/POST is supported.
+ @param path The path of URL. e.g /user/:uid/book/:bookId
+ @param delegate The task's delegate object. You can get execution state of task by it.
+ @param taskIdentifier The UUID of task.
+ @param pathValues An array consists of path parameters.
+ 
+ @discussion If set the pathValues not empty, the path value will be appended to path. Like URL https://example.com/user/13/book/1005
+ 
+ @return new instance of `HZSessionTask` with specified http parameters.
+ */
 + (instancetype)taskWithMethod:(NSString *)method
                           path:(NSString *)path
                         pathValues:(NSArray<NSString *> *)pathValues
@@ -145,9 +155,7 @@ typedef NS_ENUM(NSUInteger, HZSessionTaskCacheImportState) {  //The importing st
 @property(nullable, nonatomic, readonly) NSDictionary <NSString *, NSString *> *requestHeader;
 
 /** 
- The patheValues will be appended to path.
- 
- For example, pathValues = @[value1,value2...], the URL like https://github.com/GeniusBrother/HZExtend/value1/value2/...
+ The patheValues will replace path parameter
  */
 @property(nullable, nonatomic, strong) NSMutableArray<NSString *> *pathValues;
 
