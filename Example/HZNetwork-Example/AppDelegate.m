@@ -26,18 +26,6 @@
     //Registers the cache hanlder which implements the protocol of HZNetworkCache.
     [[HZNetworkConfig sharedConfig] registerCacheHandler:[[HZNetworkCacheHandler alloc] init]];
     
-    NSString *path = @"http://localhost:1337?key=value";
-    
-    NSURL *url = [NSURL URLWithString:path];
-    
-    NSLog(@"%@", url.relativePath);
-    
-//    HZSessionTask *task = [HZSessionTask taskWithMethod:@"GET" URLString:@"http://localhost:1337/test" params:@{@"key":@"value"} delegate:nil taskIdentifier:@"task"];
-    HZSessionTask *task = [HZSessionTask taskWithMethod:@"GET" path:@"/user/:id/book/:bookId" pathValues:@[@123,@456] delegate:nil taskIdentifier:@"hhh"];
-    
-    NSLog(@"%@",task.requestPath);
-
-    
     return YES;
 }
 
