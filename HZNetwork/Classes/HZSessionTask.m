@@ -11,6 +11,7 @@
 #import "HZNetworkConfig.h"
 #import "HZNetworkAction.h"
 #import "NSDictionary+Helper.h"
+#import "NSString+URL.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @interface HZSessionTask ()
@@ -410,6 +411,8 @@
         if (matches.count == self.pathValues.count) {
             for (NSInteger idx = matches.count - 1; idx>=0; idx--) {
                 id replaceValue = [self.pathValues objectAtIndex:idx];
+                if ([replaceValue isKindOfClass:[NSString class]]) replaceValue = [(NSString *)replaceValue hzn_urlEncode];
+                    
                 NSTextCheckingResult* result = matches[idx];
                 requestPath = [requestPath stringByReplacingCharactersInRange:result.range withString:[NSString stringWithFormat:@"%@",replaceValue]];
             }

@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, HZSessionTaskCacheImportState) {  //The importing st
  */
 + (instancetype)taskWithMethod:(NSString *)method
                           path:(NSString *)path
-                        pathValues:(NSArray<NSString *> *)pathValues
+                        pathValues:(nullable NSArray<NSString *> *)pathValues
                       delegate:(nullable id<HZSessionTaskDelegate>)delegate
                 taskIdentifier:(nullable NSString *)taskIdentifier;
 
