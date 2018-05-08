@@ -26,6 +26,15 @@
     //Registers the cache hanlder which implements the protocol of HZNetworkCache.
     [[HZNetworkConfig sharedConfig] registerCacheHandler:[[HZNetworkCacheHandler alloc] init]];
     
+//    HZSessionTask *task = [HZSessionTask taskWithMethod:@"GET" URLString:@"http://localhost:1337/test" params:@{@"name":@"谢作鸿"} delegate:nil taskIdentifier:@"task"];
+//    [task startWithCompletion:^(HZSessionTask * _Nonnull task) {
+//        if (task.state == HZSessionTaskStateSuccess) {
+//            NSLog(@"%@", task.responseObject);
+//        }
+//    }];
+    
+    
+    
     return YES;
 }
 
