@@ -12,7 +12,6 @@
 #import "HZNetworkAction.h"
 #import "NSDictionary+Helper.h"
 #import "NSString+URL.h"
-#import <CommonCrypto/CommonDigest.h>
 
 @interface HZSessionTask ()
 
@@ -324,20 +323,6 @@
     return string;
 }
 
-- (NSString *)md5String:(NSString *)URL
-{
-    const char *str = [URL UTF8String];
-    if (str == NULL) {
-        str = "";
-    }
-    unsigned char r[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(str, (CC_LONG)strlen(str), r);
-    NSString *MD5 = [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-                          r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[10],
-                          r[11], r[12], r[13], r[14], r[15]];
-    
-    return MD5;
-}
 
 #pragma mark - Setter
 - (void)setResponseObject:(id)responseObject
@@ -381,7 +366,7 @@
         identifierURL = [identifierURL stringByAppendingString:headerKeyValue];
     }
     
-    NSString *cacheKey = [self md5String:identifierURL];
+    NSString *cacheKey = [identifierURL hzn_md5String];
     return cacheKey;
 }
 

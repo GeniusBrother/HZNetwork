@@ -11,4 +11,6 @@
 
 - (NSString *)hzn_urlEncode;
 
+- (NSString *)hzn_md5String;
+
 @end

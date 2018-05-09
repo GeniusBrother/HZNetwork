@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HZNetwork" 
-  s.version      = "0.6.0"    
+  s.version      = "0.6.5"    
   s.summary      = "A useful networking framework based on AFNetworking for iOS, OS X, watchOS, and tvOS."
   s.homepage     = "https://github.com/GeniusBrother/HZNetwork.git"
   s.license      = "MIT"
