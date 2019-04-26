@@ -53,7 +53,7 @@ static id _instance;
             _headerFields = [NSMutableDictionary dictionary];
             _SSLPinningMode = HZSSLPinningModeNone;
             _allowInvalidCertificates = NO;
-            _validatesDomainName = true,
+            _validatesDomainName = true;
         });
     }
     return self;
