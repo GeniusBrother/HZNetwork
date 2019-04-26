@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28A054DA21B4FDF0009EE67B /* UDCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A054D921B4FDF0009EE67B /* UDCollectionModel.m */; };
+		28A054DD21B4FDFE009EE67B /* ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A054DC21B4FDFE009EE67B /* ViewModel.m */; };
+		28A054E521B6208B009EE67B /* xihu-beta.unimedia.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 28A054E421B6208A009EE67B /* xihu-beta.unimedia.com.cer */; };
+		28A054E721B625AB009EE67B /* *.tikiapp.im.cer in Resources */ = {isa = PBXBuildFile; fileRef = 28A054E621B625AB009EE67B /* *.tikiapp.im.cer */; };
+		28AEC14221B9FE09005D589B /* xg.cer in Resources */ = {isa = PBXBuildFile; fileRef = 28AEC14121B9FE09005D589B /* xg.cer */; };
 		28BE06231F384F5200D9ACE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BE06221F384F5200D9ACE5 /* main.m */; };
 		28BE06261F384F5200D9ACE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BE06251F384F5200D9ACE5 /* AppDelegate.m */; };
 		28BE062C1F384F5200D9ACE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28BE062A1F384F5200D9ACE5 /* Main.storyboard */; };
@@ -15,11 +20,9 @@
 		28D88C8B1F3D98B500322F0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88C8A1F3D98B500322F0B /* ViewController.m */; };
 		28D88C8E1F3D9A8600322F0B /* HZNetworkCacheHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88C8D1F3D9A8600322F0B /* HZNetworkCacheHandler.m */; };
 		28D88C911F3D9C9500322F0B /* HZViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88C901F3D9C9500322F0B /* HZViewModel.m */; };
-		28D88C941F3D9CE200322F0B /* ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88C931F3D9CE200322F0B /* ViewModel.m */; };
 		28D88CC41F3DB80D00322F0B /* HZRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88CBD1F3DB80D00322F0B /* HZRefreshAutoFooter.m */; };
 		28D88CC61F3DB80D00322F0B /* HZRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88CC11F3DB80D00322F0B /* HZRefreshHeaderView.m */; };
 		28D88CC71F3DB80D00322F0B /* UIScrollView+HZRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88CC31F3DB80D00322F0B /* UIScrollView+HZRefresh.m */; };
-		28D88CD51F3DBB9800322F0B /* UDCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88CCE1F3DBB9800322F0B /* UDCollectionModel.m */; };
 		28D88CD61F3DBB9800322F0B /* UDSerializationNumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88CD01F3DBB9800322F0B /* UDSerializationNumModel.m */; };
 		28D88CD71F3DBB9800322F0B /* UDUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88CD21F3DBB9800322F0B /* UDUserInfoModel.m */; };
 		28D88CDE1F3DBE7700322F0B /* UDSerializationDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D88CD91F3DBE7700322F0B /* UDSerializationDetailCell.m */; };
@@ -32,6 +35,13 @@
 
 /* Begin PBXFileReference section */
 		1740CC5A078311E079332810 /* libPods-HZNetwork-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HZNetwork-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28A054D821B4FDF0009EE67B /* UDCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDCollectionModel.h; sourceTree = "<group>"; };
+		28A054D921B4FDF0009EE67B /* UDCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDCollectionModel.m; sourceTree = "<group>"; };
+		28A054DB21B4FDFE009EE67B /* ViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
+		28A054DC21B4FDFE009EE67B /* ViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
+		28A054E421B6208A009EE67B /* xihu-beta.unimedia.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "xihu-beta.unimedia.com.cer"; sourceTree = "<group>"; };
+		28A054E621B625AB009EE67B /* *.tikiapp.im.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "*.tikiapp.im.cer"; sourceTree = "<group>"; };
+		28AEC14121B9FE09005D589B /* xg.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = xg.cer; sourceTree = "<group>"; };
 		28BE061E1F384F5200D9ACE5 /* HZNetwork-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HZNetwork-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BE06221F384F5200D9ACE5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28BE06241F384F5200D9ACE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,16 +56,12 @@
 		28D88C8D1F3D9A8600322F0B /* HZNetworkCacheHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZNetworkCacheHandler.m; sourceTree = "<group>"; };
 		28D88C8F1F3D9C9400322F0B /* HZViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZViewModel.h; sourceTree = "<group>"; };
 		28D88C901F3D9C9500322F0B /* HZViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZViewModel.m; sourceTree = "<group>"; };
-		28D88C921F3D9CE200322F0B /* ViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
-		28D88C931F3D9CE200322F0B /* ViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
 		28D88CBC1F3DB80D00322F0B /* HZRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZRefreshAutoFooter.h; sourceTree = "<group>"; };
 		28D88CBD1F3DB80D00322F0B /* HZRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZRefreshAutoFooter.m; sourceTree = "<group>"; };
 		28D88CC01F3DB80D00322F0B /* HZRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZRefreshHeaderView.h; sourceTree = "<group>"; };
 		28D88CC11F3DB80D00322F0B /* HZRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZRefreshHeaderView.m; sourceTree = "<group>"; };
 		28D88CC21F3DB80D00322F0B /* UIScrollView+HZRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HZRefresh.h"; sourceTree = "<group>"; };
 		28D88CC31F3DB80D00322F0B /* UIScrollView+HZRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HZRefresh.m"; sourceTree = "<group>"; };
-		28D88CCD1F3DBB9800322F0B /* UDCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDCollectionModel.h; sourceTree = "<group>"; };
-		28D88CCE1F3DBB9800322F0B /* UDCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDCollectionModel.m; sourceTree = "<group>"; };
 		28D88CCF1F3DBB9800322F0B /* UDSerializationNumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDSerializationNumModel.h; sourceTree = "<group>"; };
 		28D88CD01F3DBB9800322F0B /* UDSerializationNumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDSerializationNumModel.m; sourceTree = "<group>"; };
 		28D88CD11F3DBB9800322F0B /* UDUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDUserInfoModel.h; sourceTree = "<group>"; };
@@ -128,6 +134,9 @@
 				28BE062D1F384F5200D9ACE5 /* Assets.xcassets */,
 				28BE062F1F384F5200D9ACE5 /* LaunchScreen.storyboard */,
 				28BE06321F384F5200D9ACE5 /* Info.plist */,
+				28AEC14121B9FE09005D589B /* xg.cer */,
+				28A054E621B625AB009EE67B /* *.tikiapp.im.cer */,
+				28A054E421B6208A009EE67B /* xihu-beta.unimedia.com.cer */,
 				28BE06211F384F5200D9ACE5 /* Supporting Files */,
 			);
 			path = "HZNetwork-Example";
@@ -167,10 +176,10 @@
 		28D88C871F3D989700322F0B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				28A054DB21B4FDFE009EE67B /* ViewModel.h */,
+				28A054DC21B4FDFE009EE67B /* ViewModel.m */,
 				28D88C8F1F3D9C9400322F0B /* HZViewModel.h */,
 				28D88C901F3D9C9500322F0B /* HZViewModel.m */,
-				28D88C921F3D9CE200322F0B /* ViewModel.h */,
-				28D88C931F3D9CE200322F0B /* ViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -187,8 +196,8 @@
 		28D88CC81F3DBB9800322F0B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				28D88CCD1F3DBB9800322F0B /* UDCollectionModel.h */,
-				28D88CCE1F3DBB9800322F0B /* UDCollectionModel.m */,
+				28A054D821B4FDF0009EE67B /* UDCollectionModel.h */,
+				28A054D921B4FDF0009EE67B /* UDCollectionModel.m */,
 				28D88CCF1F3DBB9800322F0B /* UDSerializationNumModel.h */,
 				28D88CD01F3DBB9800322F0B /* UDSerializationNumModel.m */,
 				28D88CD11F3DBB9800322F0B /* UDUserInfoModel.h */,
@@ -266,9 +275,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A054E521B6208B009EE67B /* xihu-beta.unimedia.com.cer in Resources */,
 				28BE06311F384F5200D9ACE5 /* LaunchScreen.storyboard in Resources */,
 				28BE062E1F384F5200D9ACE5 /* Assets.xcassets in Resources */,
 				28BE062C1F384F5200D9ACE5 /* Main.storyboard in Resources */,
+				28A054E721B625AB009EE67B /* *.tikiapp.im.cer in Resources */,
+				28AEC14221B9FE09005D589B /* xg.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,20 +347,20 @@
 			files = (
 				28D88CD61F3DBB9800322F0B /* UDSerializationNumModel.m in Sources */,
 				28D88CE61F40416600322F0B /* HZCircleView.m in Sources */,
-				28D88C941F3D9CE200322F0B /* ViewModel.m in Sources */,
 				28D88CE31F40408900322F0B /* UIImageView+HZExtend.m in Sources */,
 				28D88CC61F3DB80D00322F0B /* HZRefreshHeaderView.m in Sources */,
 				28D88CDF1F3DBE7700322F0B /* UDSerializationItemView.m in Sources */,
 				28D88CD71F3DBB9800322F0B /* UDUserInfoModel.m in Sources */,
 				28D88CE01F3DBE7700322F0B /* UDSerializationNumView.m in Sources */,
-				28D88CD51F3DBB9800322F0B /* UDCollectionModel.m in Sources */,
 				28D88C8E1F3D9A8600322F0B /* HZNetworkCacheHandler.m in Sources */,
+				28A054DD21B4FDFE009EE67B /* ViewModel.m in Sources */,
 				28D88C911F3D9C9500322F0B /* HZViewModel.m in Sources */,
 				28D88C8B1F3D98B500322F0B /* ViewController.m in Sources */,
 				28D88CDE1F3DBE7700322F0B /* UDSerializationDetailCell.m in Sources */,
 				28BE06261F384F5200D9ACE5 /* AppDelegate.m in Sources */,
 				28D88CC41F3DB80D00322F0B /* HZRefreshAutoFooter.m in Sources */,
 				28BE06231F384F5200D9ACE5 /* main.m in Sources */,
+				28A054DA21B4FDF0009EE67B /* UDCollectionModel.m in Sources */,
 				28D88CC71F3DB80D00322F0B /* UIScrollView+HZRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,7 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "HZNetwork-Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hz.HZNetwork-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,7 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "HZNetwork-Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hz.HZNetwork-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
